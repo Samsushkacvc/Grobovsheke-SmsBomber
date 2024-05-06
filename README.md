@@ -9,6 +9,8 @@
   ```
   python -m venv venv
   venv\scripts\activate
+
+  cd [путь к бомберу]
   pip install -r Core/requirements.txt
   ```
 - **Запуск с web интерфейсом**
