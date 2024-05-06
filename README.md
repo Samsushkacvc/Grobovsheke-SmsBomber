@@ -5,8 +5,10 @@
 
 # 💻 Windows
 - **Установка**
+  - ***установку необходимо проводить в venv окружении***
   ```
-  cd [путь к бомберу]
+  python -m venv venv
+  venv\scripts\activate
   pip install -r Core/requirements.txt
   ```
 - **Запуск с web интерфейсом**
@@ -16,7 +18,7 @@
   ```
 # 🐧 Linux
 - **Установка**
-  - ***На Linux установку необходимо проводить в venv окружении***
+  - ***установку необходимо проводить в venv окружении***
   ```
   git clone https://github.com/Samsushkacvc/Grobovsheke-SmsBomber && cd Grobovsheke-SmsBomber && pip3 install -r Core/requirements.txt
   ```
