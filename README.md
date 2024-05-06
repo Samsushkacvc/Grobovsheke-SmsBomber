@@ -6,22 +6,28 @@
 # 💻 Windows
 - **Установка**
   ```
-  pip install flet
-  pip install aiohttp
+  cd [путь к бомберу]
+  pip install -r Core/requirements.txt
   ```
 - **Запуск с web интерфейсом**
   ```
-  переходим в дирректорию с самим бомбером
+  cd [путь к бомберу]
   python start.py
   ```
-- **Библиотеки**
+# 🐧 Linux
+- **Установка**
+  - ***На Linux установку необходимо проводить в venv окружении***
   ```
-  flet==0.9.0
-  aiohttp==3.8.4
+  git clone https://github.com/Samsushkacvc/Grobovsheke-SmsBomber && cd Grobovsheke-SmsBomber && pip3 install -r Core/requirements.txt
   ```
-
+- **Запуск с web интерфейсом**
+  ```
+  cd Grobovsheke-SmsBomber
+  python3 start.py
+  ```
+  
 # ⚡️ Дополнительно
 - **Наш Telegram канал -> [@grobovsheke](https://t.me/grobovsheke).**
-- **[Мой телеграм](https://t.me/HECAMCA)**
+- **[Мой телеграm](https://t.me/HECAMCA)**
 
 
