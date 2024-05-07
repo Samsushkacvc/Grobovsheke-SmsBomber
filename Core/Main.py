@@ -8,19 +8,15 @@ from Core.Attack.Services import urls
 from Core.Attack.Feedback_Services import feedback_urls
 from Core.TBanner import banner
 
-
-
 color = check_config()['color']
-
-
 
 def main(page: Page):
     page.window_center()
-    page.title = 'Grobovsheke'
+    page.title = 'Grobovsheke-SmsBomber'
     page.scroll = 'adaptive'
     page.auto_scroll = True
-    page.window_width = 820
-    page.window_height = 720
+    page.window_width = 560
+    page.window_height = 600
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
     page.theme_mode = check_config()['theme']
@@ -28,24 +24,16 @@ def main(page: Page):
     page.window_resizable = False
     change_config('attack', 'False')
 
-
-
     def type_attack_change(e):
         change_config('type_attack', f'{type_attack.value}')
 
-
-
     def feedback_change(e):
         change_config('feedback', f'{feedback.value}')
-
-
 
     def theme_change(e):
         page.theme_mode = 'dark' if page.theme_mode == 'light' else 'light'
         page.update()
         change_config('theme', f'''{page.theme_mode}''')
-
-
 
     def color_change(e):
         _color = [MY_COLOR, 'red', 'pink', 'WHITE', 'black', 'purple', 'indigo', 'blue', 'cyan', 'teal', 'green', 'lime', 'yellow', 'amber', 'orange', 'brown', 'bluegrey', 'grey']
@@ -76,8 +64,6 @@ def main(page: Page):
         ADD()
         change_config('color', f'{color}')
 
-
-
     def error(message, reason='error'):
         def button_cancel(e):
             error_message.open = False
@@ -88,8 +74,6 @@ def main(page: Page):
         page.dialog = error_message
         error_message.open = True
         page.update()
-
-
 
     def start_attack():
         def button_cancel(e):
@@ -107,8 +91,6 @@ def main(page: Page):
         attack_window.open = False
         page.update()
 
-
-
     def confirmation():
         def button_cancel(e):
             confirmation_window.open = False
@@ -124,8 +106,6 @@ def main(page: Page):
         confirmation_window = AlertDialog(modal=True, title=Text('Attention!', color=color, size=30, text_align='center'), content=Text('After launching an attack and instantly canceling it, the launch process will be irreversible, and the attack will be completed to completion in any case!\n\nContinue?'), actions=[TextButton('NO', on_click=button_cancel, style=ButtonStyle(color=color)), TextButton('YES', on_click=button_continue, style=ButtonStyle(color=color))], actions_alignment='end', open=True)
         page.dialog = confirmation_window
         page.update()
-
-
 
     def checking_values(e):
         if number.value:
@@ -163,19 +143,15 @@ def main(page: Page):
             error('Enter attack number!')
             number.focus()
 
-
-
     def information(e):
         def button(e):
             information_window.open = False
             page.update()
 
-        information_window = AlertDialog(content=Text(f'''Сервисов - {len(urls("12345"))}\nRU - {sum(1 for i in urls("12345") if i["info"]["country"] == "RU")}   |   UZ - {sum(1 for i in urls("12345") if i["info"]["country"] == "UZ")}   |   ALL - {sum(1 for i in urls("12345") if i["info"]["country"] == "ALL")}\n\nФидбек Сервисов - {len(feedback_urls("12345"))}\nRU - {sum(1 for i in feedback_urls("12345") if i["info"]["country"] == "RU")}   |   UZ - {sum(1 for i in feedback_urls("12345") if i["info"]["country"] == "UZ")}   |   ALL - {sum(1 for i in feedback_urls("12345") if i["info"]["country"] == "ALL")}\n\nВсего - {len(urls("12345")) + len(feedback_urls("12345"))}''', text_align='center', size=17, font_family='Consolas'), title=Text(f'''GROBOVSHEKE V{VERSION}''', text_align='center', size=40, color=color, font_family='Consolas'), open=True, actions=[TextButton('ОКЕЙ', width=110, height=50, on_click=button, style=ButtonStyle(color=color))], actions_alignment='end')
+        information_window = AlertDialog(content=Text(f'''Grobovsheke-SmsBomber!''', text_align='center', size=24, color=color, font_family='Consolas'), open=True, actions=[TextButton('ok', width=110, height=50, on_click=button, style=ButtonStyle(color=color))], actions_alignment='end')
 
         page.dialog = information_window
         page.update()
-
-
 
     banner = Stack([Text(spans=[TextSpan('Grobovsheke', TextStyle(size=85, foreground=Paint(color=color, stroke_width=9, stroke_join='round', style='stroke')))], font_family='Consolas'), Text(spans=[TextSpan('Grobovsheke', TextStyle(size=85, color=color))], font_family='Consolas')])
 
@@ -187,9 +163,7 @@ def main(page: Page):
 
     feedback = Switch(label='Feedback services (?)', value=True if check_config()['feedback'] == 'True' else False, width=280, active_color=color, on_change=feedback_change, tooltip='Services that leave applications (such as connecting to the Internet or taking out a loan) on different sites. Be careful\nwhen using this function!')
 
-    attack_button = ElevatedButton(content=Text('Attack', size=25), on_click=checking_values, width=190, height=60, color=color, autofocus=True)
-
-
+    attack_button = ElevatedButton(content=Text('Attack', size=25), on_click=checking_values, width=190, height=60, color=color)
 
     def ADD():
         page.add(
@@ -200,11 +174,10 @@ def main(page: Page):
                 Row([type_attack, replay],alignment='CENTER'),
                 feedback,
                 attack_button,
-                Text('\n', size=12))
-                
+                  Row([IconButton(icon='telegram', icon_size=48, tooltip='Channel', url='https://t.me/grobovsheke', icon_color=color),
+                    IconButton(icon='telegram', icon_size=48, tooltip='Coder', url='https://t.me/HECAMCA', icon_color=color),
+                    IconButton(icon='info', icon_size=48, tooltip='Information', icon_color=color, on_click=information)], alignment='CENTER')),    
     ADD()
-
-
 
 def Start(web=True):
     if web:
