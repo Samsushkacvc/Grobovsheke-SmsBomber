@@ -1,5 +1,5 @@
 from json import load, dump
-VERSION = '1.07'
+VERSION = '1.1'
 MY_COLOR = 'deeppurpleaccent100'
 URL_CHANNEL = 'https://t.me/grobovsheke'
 CONFIG_NAME = 'config.json'
@@ -11,7 +11,7 @@ def check_config():
                 return load(f)
         except:
             with open(CONFIG_NAME, 'w') as f:
-                f.write('{"theme": "dark", "feedback": "False", "type_attack": "SMS", "attack": "False", "key": "", "color": "purple"}')
+                f.write('{"theme": "dark", "feedback": "False", "type_attack": "SMS", "attack": "False", "key": "", "color": "WHITE"}')
 
 
 

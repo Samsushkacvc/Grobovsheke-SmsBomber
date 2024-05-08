@@ -153,7 +153,7 @@ def main(page: Page):
         page.dialog = information_window
         page.update()
 
-    banner = Stack([Text(spans=[TextSpan('Grobovsheke', TextStyle(size=85, foreground=Paint(color=color, stroke_width=9, stroke_join='round', style='stroke')))], font_family='Consolas'), Text(spans=[TextSpan('Grobovsheke', TextStyle(size=85, color=color))], font_family='Consolas')])
+    banner = Stack([Text(spans=[TextSpan('Grobovsheke', TextStyle(size=85, foreground=Paint(color=color, stroke_width=7, stroke_join='round', style='stroke')))], font_family='Consolas'), Text(spans=[TextSpan('Grobovsheke', TextStyle(size=85, color=color))], font_family='Consolas')])
 
     number = TextField(label='Enter the number without "+"', width=275, text_align='center', border_radius=40, border_color=color, cursor_color=color, focused_border_color=color, autofocus=True, selection_color=color, label_style=TextStyle(color=color))
 
@@ -167,15 +167,14 @@ def main(page: Page):
 
     def ADD():
         page.add(
-                Text('\n', size=6),
+                Text('\n', size=3),
                 banner,
-                Text('\n', size=12),
                 number,
                 Row([type_attack, replay],alignment='CENTER'),
                 feedback,
                 attack_button,
                   Row([IconButton(icon='telegram', icon_size=48, tooltip='Channel', url='https://t.me/grobovsheke', icon_color=color),
-                    IconButton(icon='telegram', icon_size=48, tooltip='Coder', url='https://t.me/HECAMCA', icon_color=color),
+                    IconButton(icon='attach_money', icon_size=48, tooltip='Donate', url='https://www.donationalerts.com/r/samsushkacvc', icon_color=color),
                     IconButton(icon='info', icon_size=48, tooltip='Information', icon_color=color, on_click=information)], alignment='CENTER')),    
     ADD()
 
